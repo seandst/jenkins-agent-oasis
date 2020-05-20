@@ -19,7 +19,7 @@ RUN curl https://raw.githubusercontent.com/cloudrouter/centos-repo/master/CentOS
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
-RUN pip3 --no-cache-dir install ansible molecule "molecule[test]" "molecule[lint]" molecule-openstack tox-ansible openstacksdk
+RUN pip3 --no-cache-dir install tox-ansible python-openstackclient
 
 RUN chown -R 1001:0 $HOME && chmod -R g+rwX $HOME
 
