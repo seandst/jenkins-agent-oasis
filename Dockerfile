@@ -6,6 +6,9 @@ FROM quay.io/openshift/origin-jenkins-agent-base
 ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
+# OASIS_CLOUDS_YAML is an injected kubernetes secret, where the value
+# is an uploaded clouds.yaml with the "default" cloud being the
+# details needed for molecule us and openstack cluster for CI
 RUN mkdir -p $HOME/.config/openstack/ && printf "${OASIS_CLOUDS_YAML}"> $HOME/.config/openstack/clouds.yaml
 
 RUN curl https://raw.githubusercontent.com/cloudrouter/centos-repo/master/CentOS-Base.repo -o /etc/yum.repos.d/CentOS-Base.repo && \
